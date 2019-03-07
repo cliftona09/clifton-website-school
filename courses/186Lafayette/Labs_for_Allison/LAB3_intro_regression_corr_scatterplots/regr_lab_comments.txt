@@ -1,0 +1,43 @@
+
+186 Lab 2 - comments 
+
+
+
+#1f - you wrote (-2,3), but you meant (-2,2) for the last part.
+
+#1f - for *z-scores*, 68% are between +/-1, and 95% are between +/-2.  You used the original units, not on the z-score scale.
+
+
+#2c - you only went +/- 1 sd.  You need to go +/- 2 sds for 95%
+
+
+#2d - noteworthy tall outlier!
+
+
+#2i - Standard deviation would change.  It measures spread, and deleting the two most outlying values decreases spread.
+
+Median would not change, because taking one value each from the left and right of the median still leaves it directly in the middle.
+
+
+#3c - use the value of the slope in the sentence.  "As a person's weight increases by one pound, we expect the time to chug a beverage to decrease by 0.06573 seconds".  Similar comment for #4c.  But for #5c - very nice!  For #5k, make sure you aren't making a definitive statement - add language like "we expect it to in/decrease" or "it in/decreases by this much on average.”
+
+
+
+
+#3g - calculate the prediction with your myreg() function.  It comes out to ~ -3.11 seconds!  Finish chugging before you start!
+
+
+
+#2a - it can be difficult to summarize shape at first.  a lot of students want to read a lot into slight deviations from perfect symmetry.  don't do this.  this is a wonderfully symmetric plot - they don't get much better than this in the wild.  Same for 2d.
+
+
+#3a - you note some curvature here, which I can understand at first glance, mainly due to the heaviest person in the dataset.  It can be tricky to describe shape (e.g. shape of relationships and/or shape of distributions) at first.  I usually try not to let a single observation, as in this case, dictate the shape of an entire cloud of data.  If you gloss over this one person, it looks pretty much linear.  
+
+
+#3g - what's obviously invalid?
+
+#5e - you flipped the role of August temps and latitude in this sentence.
+
+#5g - you're supposed to see that these are the same.
+
+#5 R^2 - About 61% of the variation in August temps is explained by latitude.

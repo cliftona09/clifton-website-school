@@ -1,0 +1,5306 @@
+tmp
+hand=rep(as.numeric(names(tmp)[which.max(tmp)]),max(tmp))
+hand
+roll=sample(1:6,5-length(hand),replace=T)
+roll
+roll=c(roll,hand)
+roll
+tmp=table(roll)
+tmp
+hand=rep(as.numeric(names(tmp)[which.max(tmp)]),max(tmp))
+hand
+hand=matrix(0,5,2)#
+hand[,1]=c(2,3,4,5,6)#
+hand[,2]=c(1,1,1,1,1)
+tmp1=table(hand[,1])#
+#length(tmp1)#
+# column of suite is labeled as tmp and shown then#
+tmp2=table(hand[,2])
+score=NULL#
+#code for royal flush#
+if ((length(tmp2)==1)&&(names(tmp1)==c("10","11","12","13","14"))) {score=10}#
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+as.numeric(names(tmp1)[which.max(tmp1)])/100}#
+if((length(tmp2)==1)&&(names(tmp1)==c("2","3","4","5","14"))) {score=9}
+score
+which.max(tmp1)
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}#
+if((length(tmp2)==1)&&(names(tmp1)==c("2","3","4","5","14"))) {score=9}
+score
+names(tmp1)==c("2","3","4","5","14")
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}
+score
+if ((length(tmp2)==1)&&(names(tmp1)==c("10","11","12","13","14"))) {score=10}#
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}#
+if((length(tmp2)==1)&&(sum(names(tmp1)==c("2","3","4","5","14"))==5)) {score=9}
+score
+# column of the number cards and amount of different values#
+tmp1=table(hand[,1])#
+#length(tmp1)#
+# column of suite is labeled as tmp and shown then#
+tmp2=table(hand[,2])#
+#tmp2#
+score=NULL#
+#code for royal flush#
+if ((length(tmp2)==1)&&(names(tmp1)==c("10","11","12","13","14"))) {score=10}#
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}#
+if((length(tmp2)==1)&&(sum(names(tmp1)==c("2","3","4","5","14"))==5)) {score=9}#
+#code for four of a kind#
+if ((max(tmp1)==4)&&(length(tmp1)==2)) {score=8+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4))}#
+#code for full house#
+if((max(tmp1)==3) && (min(tmp1)==2)) {score=7+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for a flush#
+if(length(tmp2)==1){score=6+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for straight#
+if((length(tmp1)==5) && max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4) {score=5+max(as.numeric(names(tmp1)))/100}#
+if(sum(names(tmp1)==c("2","3","4","5","14"))==5) {score=5}#
+#code for 3 of a kind#
+if ((length(tmp1)==3)&&(max(tmp1)==3)&&(min(tmp1)==1)) {score=4+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for two pair#
+if ((length(tmp1)==3)&&max(tmp1)==2){score=3+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#how many different suites there are#
+length(tmp2)#
+#assign value of 2 to a pair#
+if(length(tmp1)==4){score=2+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for high card#
+if (length(tmp1)==5) {score=1+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}
+score_fn=function(hand){#
+# column of the number cards and amount of different values#
+tmp1=table(hand[,1])#
+#length(tmp1)#
+# column of suite is labeled as tmp and shown then#
+tmp2=table(hand[,2])#
+#tmp2#
+score=NULL#
+#code for royal flush#
+if ((length(tmp2)==1)&&(names(tmp1)==c("10","11","12","13","14"))) {score=10}#
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}#
+if((length(tmp2)==1)&&(sum(names(tmp1)==c("2","3","4","5","14"))==5)) {score=9}#
+#code for four of a kind#
+if ((max(tmp1)==4)&&(length(tmp1)==2)) {score=8+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4))}#
+#code for full house#
+if((max(tmp1)==3) && (min(tmp1)==2)) {score=7+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for a flush#
+if(length(tmp2)==1){score=6+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for straight#
+if((length(tmp1)==5) && max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4) {score=5+max(as.numeric(names(tmp1)))/100}#
+if(sum(names(tmp1)==c("2","3","4","5","14"))==5) {score=5}#
+#code for 3 of a kind#
+if ((length(tmp1)==3)&&(max(tmp1)==3)&&(min(tmp1)==1)) {score=4+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for two pair#
+if ((length(tmp1)==3)&&max(tmp1)==2){score=3+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#how many different suites there are#
+length(tmp2)#
+#assign value of 2 to a pair#
+if(length(tmp1)==4){score=2+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for high card#
+if (length(tmp1)==5) {score=1+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+return(score)#
+}
+hand
+score_fn(hand)
+score_fn=function(hand){#
+# column of the number cards and amount of different values#
+tmp1=table(hand[,1])#
+#length(tmp1)#
+# column of suite is labeled as tmp and shown then#
+tmp2=table(hand[,2])#
+#tmp2#
+score=NULL#
+#code for royal flush#
+if ((length(tmp2)==1)&&(names(tmp1)==c("10","11","12","13","14"))) {score=10}#
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}#
+if((length(tmp2)==1)&&(sum(names(tmp1)==c("2","3","4","5","14"))==5)) {score=9}#
+#code for four of a kind#
+if ((max(tmp1)==4)&&(length(tmp1)==2)) {score=8+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4))}#
+#code for full house#
+if((max(tmp1)==3) && (min(tmp1)==2)) {score=7+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for a flush#
+else{#
+if(length(tmp2)==1){score=6+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for straight#
+if((length(tmp1)==5) && max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4) {score=5+max(as.numeric(names(tmp1)))/100}#
+if(sum(names(tmp1)==c("2","3","4","5","14"))==5) {score=5}#
+else{#
+#code for 3 of a kind#
+if ((length(tmp1)==3)&&(max(tmp1)==3)&&(min(tmp1)==1)) {score=4+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for two pair#
+if ((length(tmp1)==3)&&max(tmp1)==2){score=3+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#how many different suites there are#
+length(tmp2)#
+else{#
+#assign value of 2 to a pair#
+if(length(tmp1)==4){score=2+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for high card#
+if (length(tmp1)==5) {score=1+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+}}}}}}#
+return(score)#
+}
+score_fn=function(hand){#
+# column of the number cards and amount of different values#
+tmp1=table(hand[,1])#
+#length(tmp1)#
+# column of suite is labeled as tmp and shown then#
+tmp2=table(hand[,2])#
+#tmp2#
+score=NULL#
+#code for royal flush#
+if ((length(tmp2)==1)&&(names(tmp1)==c("10","11","12","13","14"))) {score=10}#
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}#
+if((length(tmp2)==1)&&(sum(names(tmp1)==c("2","3","4","5","14"))==5)) {score=9}#
+#code for four of a kind#
+if ((max(tmp1)==4)&&(length(tmp1)==2)) {score=8+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4))}#
+#code for full house#
+if((max(tmp1)==3) && (min(tmp1)==2)) {score=7+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+#code for a flush#
+else{#
+if(length(tmp2)==1){score=6+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for straight#
+if((length(tmp1)==5) && max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4) {score=5+max(as.numeric(names(tmp1)))/100}#
+if(sum(names(tmp1)==c("2","3","4","5","14"))==5) {score=5}#
+else{#
+#code for 3 of a kind#
+if ((length(tmp1)==3)&&(max(tmp1)==3)&&(min(tmp1)==1)) {score=4+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for two pair#
+if ((length(tmp1)==3)&&max(tmp1)==2){score=3+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#assign value of 2 to a pair#
+if(length(tmp1)==4){score=2+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for high card#
+if (length(tmp1)==5) {score=1+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+}}}}}}#
+return(score)#
+}
+hand
+score_fn(hand)
+score_fn=function(hand){#
+# column of the number cards and amount of different values#
+tmp1=table(hand[,1])#
+#length(tmp1)#
+# column of suite is labeled as tmp and shown then#
+tmp2=table(hand[,2])#
+#tmp2#
+score=NULL#
+#code for royal flush#
+if ((length(tmp2)==1)&&(names(tmp1)==c("10","11","12","13","14"))) {score=10}#
+else{#
+#code for straight flush#
+if ((length(tmp2)==1)&& (length(tmp1)==5) && (max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4)) {score=9+max(as.numeric(names(tmp1)))/100}#
+else{#
+if((length(tmp2)==1)&&(sum(names(tmp1)==c("2","3","4","5","14"))==5)) {score=9}#
+else{#
+#code for four of a kind#
+if ((max(tmp1)==4)&&(length(tmp1)==2)) {score=8+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4))}#
+else{#
+#code for full house#
+if((max(tmp1)==3) && (min(tmp1)==2)) {score=7+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for a flush#
+if(length(tmp2)==1){score=6+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for straight#
+if((length(tmp1)==5) && max(as.numeric(names(tmp1)))-min(as.numeric(names(tmp1)))==4) {score=5+max(as.numeric(names(tmp1)))/100}#
+if(sum(names(tmp1)==c("2","3","4","5","14"))==5) {score=5}#
+else{#
+#code for 3 of a kind#
+if ((length(tmp1)==3)&&(max(tmp1)==3)&&(min(tmp1)==1)) {score=4+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for two pair#
+if ((length(tmp1)==3)&&max(tmp1)==2){score=3+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#assign value of 2 to a pair#
+if(length(tmp1)==4){score=2+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+else{#
+#code for high card#
+if (length(tmp1)==5) {score=1+ sum(as.numeric(names(rev(tmp1)))/10^c(2,4,6,8,10))}#
+}}}}}}}}}}#
+return(score)#
+}
+hand
+score_fn(hand)
+hand[,1]=c(2,4,6,8,9)
+hand[,2]=c(1,1,2,2,3)
+score_fn(hand)
+hand[,1]=c(2,4,4,8,9)
+score_fn(hand)
+tmp1=table(hand[,1])
+tmp1
+length(tmp1)
+as.numeric(names(tmp1))/(10^1:5)
+as.numeric(names(rev(tmp1))
+)
+v=c(rep(1,20),(0,80))
+v=c(rep(1,20),rep(0,80))
+table(v)
+prop.table(v)
+prop.table(table(v))
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+if(p==1)#
+{if(r1==r2)#
+	{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+}#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+}#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+p=1#
+if(p==1)#
+{if(r1==r2)#
+	{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+}#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+}#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+p=1#
+if(p==1)#
+{if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+}#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}
+r1
+r2
+m
+n
+mn
+board
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+p=1#
+if(p==1)#
+{if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+#
+}#
+}
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+p=1#
+if(p==1)#
+{if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if( (2*sum(r1,r2))<(25-min(mover)))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		boardmin[(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+#
+}#
+}
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+p=1#
+if(p==1)#
+{if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if( (2*sum(r1,r2))<(25-min(mover)))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		if(sum(board[(1+6*(p-1)):(18+6(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+#
+}#
+}
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+p=1#
+if(p==1)#
+{if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if( (2*sum(r1,r2))<(25-min(mover)))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+#
+}#
+}
+if(p==1){
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3#
+board#
+r1=sample(1:6,1)#
+r2=sample(1:6,1)#
+p=1#
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+#
+if(p==1)#
+{if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if( (2*sum(r1,r2))<(25-min(mover)))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+#
+}#
+}#
+#
+return(board)	#
+}
+}
+play(board,1,r1,r2)
+r1
+r2
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+#
+if(p==1)#
+{if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if( (2*sum(r1,r2))<(25-min(mover)))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		{{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+}#
+}#
+}#
+}#
+else{	#
+if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(2*sum(r1,r2)<25-min(mover))#
+				{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+2*sum(r1,r2),p]= board[min(mover)+2*sum(r1,r2),p]+1}#
+			else{#
+					{if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{#
+						{board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+}#
+}#
+}#
+}#
+#
+}#
+	else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1}#
+			else{#
+				if(sum(r1,r2)<25-min(mover))#
+					{board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1}#
+					else{board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m,p)]= board[min(mover+m,p)]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1}}#
+#
+}#
+}#
+#
+return(board)	#
+}
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3
+board
+r1=sample(1:6,1)#
+r2=sample(1:6,1)
+play(board,1,r1,r2)
+r1
+r2
+r1=sample(1:6,1)#
+r2=sample(1:6,1)
+r1
+r2
+play(board,1,r1,r2)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)#
+{#
+{if(any(mover==m)){board[m,p]=board[m,p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){board[m,p]=board[m,p]-1#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){board[n,p]=board[n,p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){board[n,p]=board[n,p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover+n),p]=board[max(mover+n),p]+1}#
+		}#
+else{#
+	if(any(mover==mn)){#
+		board[mn,p]=board[mn,p]-1#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			board[mn,p]=board[mn,p]-1#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover+mn),p]=board[max(mover+mn),p]+1}#
+}#
+}#
+}#
+else{#
+{if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover+n),p]=board[max(mover+n),p]+1}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover+mn))#
+			print(board)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1	#
+}#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		if(sum(board[1:18,p]>0)){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if( (2*sum(r1,r2))<min(mover))#
+				{mover=which(board[,p]>0)#
+				board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)-2*sum(r1,r2)),p]= board[(min(mover)-2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					{if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+		#Check if we can move this piece, if not, grab someone farther away than min.#
+					if(sum(r1,r2)>min(mover)){mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)+sum(r1,r2)),p]= board[(max(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)-r1),p]= board[(min(mover)-r1),p]+1#
+		if(sum(board[7:24,p]>0))#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-r1),p]= board[(min(mover)-r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1}#
+		}#
+}#
+}#
+}#
+}}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+m,p]= board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+}#
+}#
+#
+}#
+return(board)#
+}
+p=1#
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3
+play(board,p,4,5)
+play(board,2,4,5)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)#
+{#
+{if(any(mover==m)){board[m,p]=board[m,p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){board[m,p]=board[m,p]-1#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){board[n,p]=board[n,p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){board[n,p]=board[n,p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover+n),p]=board[max(mover+n),p]+1}#
+		}#
+else{#
+	if(any(mover==mn)){#
+		board[mn,p]=board[mn,p]-1#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			board[mn,p]=board[mn,p]-1#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover+mn),p]=board[max(mover+mn),p]+1}#
+}#
+}#
+}#
+else{#
+{if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover+n),p]=board[max(mover+n),p]+1}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover+mn))#
+			print(board)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1	#
+}#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		if(sum(board[1:18,p]>0)){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if( (2*sum(r1,r2))<min(mover))#
+				{mover=which(board[,p]>0)#
+				board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)-2*sum(r1,r2)),p]= board[(min(mover)-2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					{if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+		#Check if we can move this piece, if not, grab someone farther away than min.#
+					if(sum(r1,r2)>min(mover)){mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)+sum(r1,r2)),p]= board[(max(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)-r1),p]= board[(min(mover)-r1),p]+1#
+		if(sum(board[7:24,p]>0))#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-r1),p]= board[(min(mover)-r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1}#
+		}#
+}#
+}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-m,p]= board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-n,p]=board[min(mover)-n,p]+1#
+			mover=which(board[,p]>0)}}#
+}#
+}#
+#
+}#
+return(board)#
+}
+board
+play(board,2,4,5)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)#
+{#
+{if(any(mover==m)){board[m,p]=board[m,p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){board[m,p]=board[m,p]-1#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){board[n,p]=board[n,p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){board[n,p]=board[n,p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover+n),p]=board[max(mover+n),p]+1}#
+		}#
+else{#
+	if(any(mover==mn)){#
+		board[mn,p]=board[mn,p]-1#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			board[mn,p]=board[mn,p]-1#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover+mn),p]=board[max(mover+mn),p]+1}#
+}#
+}#
+}#
+else{#
+{if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover+n),p]=board[max(mover+n),p]+1}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover+mn))#
+			print(board)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1	#
+}#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					{if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1#
+		if(sum(board[1:18,p]>0)){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+r1),p]= board[(min(mover)+r1),p]+1}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if( (2*sum(r1,r2))<min(mover))#
+				{mover=which(board[,p]>0)#
+				board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)-2*sum(r1,r2)),p]= board[(min(mover)-2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					{if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)#
+		#Check if we can move this piece, if not, grab someone farther away than min.#
+					if(sum(r1,r2)>min(mover)){mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)+sum(r1,r2)),p]= board[(max(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1				#
+		board[(min(mover)-r1),p]= board[(min(mover)-r1),p]+1#
+		if(sum(board[7:24,p]>0))#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-r1),p]= board[(min(mover)-r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1}#
+		}#
+}#
+}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)+sum(r1,r2)),p]= board[(min(mover)+sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)-m),p]= board[(min(mover)-m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)-n),p]=board[(min(mover)-n),p]+1#
+			mover=which(board[,p]>0)}}#
+}#
+}#
+#
+}#
+return(board)#
+}
+play(board,2,4,5)
+play(board,1,4,5)
+play(board,2,4,5)
+play(board,2,4,4)
+board
+which(board[,2]>0)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+board=matrix(0,24,2)#
+board[1,1]=2#
+board[c(12,19),1]=5#
+board[17,1]=3#
+board[24,2]=2#
+board[c(13,6),2]=5#
+board[8,2]=3
+board
+play(board,2,4,4)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					message("hi")#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+play(board,2,4,4)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+									message("hi")#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+play(board,2,4,4)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				message(mover)#
+				if(2*sum(r1,r2)<min(mover)){#
+					message("hi")#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+play(board,2,4,4)
+board
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						message("I shouldn't be here")#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+board
+play(board,2,4,4)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			message(p)#
+			message("hi 1")#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+					message("hi 2")#
+#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+						message("hi 3")#
+#
+			mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+						message("hi 4")#
+#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+board
+play(board,2,4,4)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		print(board)#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+				print(board)#
+#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+					message("hi 2")#
+#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+						message("hi 3")#
+#
+			mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+						message("hi 4")#
+#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+play(board,2,4,4)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		print(board)#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+play(board,2,4,4)
+play=function(board,p,r1,r2){#
+m=max(r1,r2)#
+n=min(r1,r2)#
+mn=sum(m,n)#
+mover=which(board[,p]>0)#
+if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==0){#
+if(p==2)					##player2HQPlay#
+{#
+if(any(mover==m)){#
+	mover=which(board[,p]>0)#
+	board[m,p]=board[m,p]-1#
+	mover=which(board[,p]>0)#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==m)){#
+		mover=which(board[,p]>0)#
+		board[m,p]=board[m,p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==n)){#
+		mover=which(board[,p]>0)#
+		board[n,p]=board[n,p]-1#
+		mover=which(board[,p]>0)#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==n)){#
+				mover=which(board[,p]>0)#
+				board[n,p]=board[n,p]-1#
+				mover=which(board[,p]>0)#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)-n,p]=board[max(mover)-n,p]+1}#
+		mover=which(board[,p]>0)#
+		}#
+else{#
+	if(any(mover==mn)){#
+		mover=which(board[,p]>0)#
+		board[mn,p]=board[mn,p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==mn)){#
+			mover=which(board[,p]>0)#
+			board[mn,p]=board[mn,p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)-mn,p]=board[max(mover)-mn,p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+else{#
+if(any(mover==(25-m))){board[(25-m),p]=board[(25-m),p]-1#
+m=0}#
+else{#
+	while(m>1)#
+	{m=m-1#
+	if(any(mover==(25-m))){#
+		mover=which(board[,p]>0)#
+		board[(25-m),p]=board[(25-m),p]-1#
+		mover=which(board[,p]>0)#
+	m==0}#
+	}#
+	}#
+if(m==0){#
+	if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+	n==0}#
+	else{#
+		while(n>1){#
+			n=n-1#
+			if(any(mover==(25-n))){board[(25-n),p]=board[(25-n),p]-1#
+			n=0}#
+			}#
+			}#
+	if(n==1){#
+		mover=which(board[,p]>0)#
+	board[max(mover),p]=board[max(mover),p]-1#
+	board[max(mover)+n,p]=board[max(mover+n),p]+1#
+	mover=which(board[,p]>0)}#
+		}#
+else{#
+	if(any(mover==(25-mn))){#
+		mover=which(board[,p]>0)#
+		board[(25-mn),p]=board[(25-mn),p]-1#
+		mover=which(board[,p]>0)#
+		mn==0}#
+	else{#
+		while(mn>1)#
+		{mn=mn-1#
+		if(any(mover==(25-mn))){#
+			mover=which(board[,p]>0)#
+			board[(25-mn),p]=board[(25-mn),p]-1#
+			mover=which(board[,p]>0)#
+			mn==0}#
+		}#
+		}#
+		if(mn==1){#
+			print(mn)#
+			print(mover)#
+			print(max(mover)+mn)#
+			print(board)#
+			mover=which(board[,p]>0)#
+			board[max(mover),p]=board[max(mover),p]-1#
+			board[max(mover)+mn,p]=board[max(mover)+mn,p]+1#
+			mover=which(board[,p]>0)#
+}#
+}#
+}#
+}		#
+else{#
+	if(p==1){					##player1generalplay#
+			if(r1==r2)#
+	{if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if((2*sum(r1,r2))<(25-min(mover)))#
+				{mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[(min(mover)+2*sum(r1,r2)),p]= board[(min(mover)+2*sum(r1,r2)),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+					if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)+r1,p]= board[min(mover)+r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r1,p]= board[min(mover+r1),p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[1:18,p])>0)#
+		{mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+r2,p]= board[min(mover)+r2,p]+1#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{								#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1)#
+			{mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)+m,p]=board[min(mover)+m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<(25-min(mover)))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)+sum(r1,r2),p]= board[min(mover)+sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{mover=which(board[,p]>0)#
+						board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover+m),p]= board[min(mover+m),p]+1#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)+n,p]=board[min(mover)+n,p]+1#
+			mover=which(board[,p]>0)}}#
+} #
+}#
+else{							#player2generalplay #doubles#
+			if(r1==r2){#
+				if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+					mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(2*sum(r1,r2)<min(mover)){#
+					mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+					board[(min(mover)-(2*sum(r1,r2))),p]= board[(min(mover)-(2*sum(r1,r2))),p]+1#
+					mover=which(board[,p]>0)}#
+				else{#
+					if(sum(r1,r2)< min(mover)){#
+						mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[(min(mover)-sum(r1,r2)),p]= board[(min(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)	#
+		#Check if we can move this piece, if not, grab someone farther away than min. #
+			board[max(mover),p]= board[max(mover),p]-1#
+		board[(max(mover)-sum(r1,r2)),p]= board[(max(mover)-sum(r1,r2)),p]+1#
+		mover=which(board[,p]>0)}#
+					else{				##if(sum(r1,r2)>min(mover))#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1				#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+		mover=which(board[,p]>0)				#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r1,p]= board[min(mover)-r1,p]+1#
+		print(board)#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)							#
+		board[min(mover),p]= board[min(mover),p]-1#
+		print(board)#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		print(board)#
+		mover=which(board[,p]>0)}#
+		if(sum(board[7:24,p])>0){#
+			mover=which(board[,p]>0)#
+		board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-r2,p]= board[min(mover)-r2,p]+1#
+		print(board)#
+		mover=which(board[,p]>0)}#
+		}#
+}#
+}#
+}#
+else{#
+		if(sum(board[(1+6*(p-1)):(18+6*(p-1)),p])==1){#
+			mover=which(board[,p]>0)#
+			board[min(mover),p]=board[min(mover),p]-1#
+			board[min(mover)-m,p]=board[min(mover)-m,p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				if(sum(r1,r2)<min(mover))#
+					{mover=which(board[,p]>0)#
+					board[min(mover),p]= board[min(mover),p]-1#
+		board[min(mover)-sum(r1,r2),p]= board[min(mover)-sum(r1,r2),p]+1#
+		mover=which(board[,p]>0)}#
+					else{#
+						if(min(mover)>max(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-max(r1,r2),p]= board[min(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+						else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-max(r1,r2),p]= board[max(mover)-max(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			if(min(mover)>min(r1,r2)){#
+				mover=which(board[,p]>0)#
+			board[min(mover),p]= board[min(mover),p]-1#
+			board[min(mover)-min(r1,r2),p]=board[min(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+			else{#
+				mover=which(board[,p]>0)#
+			board[max(mover),p]= board[max(mover),p]-1#
+			board[max(mover)-min(r1,r2),p]=board[max(mover)-min(r1,r2),p]+1#
+			mover=which(board[,p]>0)}#
+}#
+}#
+#
+}#
+}#
+}#
+return(board)#
+}
+play(board,2,4,4)
+board
+mover=which(board[,2]>0)
+mover
+board[min(mover)-7,2]=board[min(mover)-7,2]+1
+board
+mover=c(2,4,6)
+mover=mover[mover>min(mover)]
+mover
+p=4
+start = c(rep(1,p), rep(1500,p)) #
+	players = matrix(start, 2, p, T)
+players
+.025*166
+roll=sample(1:6,5,replace=T)
+t=table(roll)
+Val1=numeric(6)
+Val1[as.numeric(names(t))]=t
+Val2=Val1
+roll
+t
+Val1
+Val2
+Move=numeric(6)#
+	if(move[6]==1){	#removes already played values from consideration#
+		Val2[6]=0#
+	}#
+	if(move5]==1){#
+		Val2[5]=0#
+	}#
+	if(move[4]==1){#
+		Val2[4]=0#
+	}#
+	if(move[3]==1){#
+		Val2[3]=0#
+	}#
+	if(move[2]==1){#
+		Val2[2]=0#
+	}#
+	if(move[1]==1){#
+		Val2[1]=0#
+	}
+move=numeric(6)#
+	if(move[6]==1){	#removes already played values from consideration#
+		Val2[6]=0#
+	}#
+	if(move5]==1){#
+		Val2[5]=0#
+	}#
+	if(move[4]==1){#
+		Val2[4]=0#
+	}#
+	if(move[3]==1){#
+		Val2[3]=0#
+	}#
+	if(move[2]==1){#
+		Val2[2]=0#
+	}#
+	if(move[1]==1){#
+		Val2[1]=0#
+	}
+move=numeric(6)#
+	if(move[6]==1){	#removes already played values from consideration#
+		Val2[6]=0#
+	}#
+	if(move[5]==1){#
+		Val2[5]=0#
+	}#
+	if(move[4]==1){#
+		Val2[4]=0#
+	}#
+	if(move[3]==1){#
+		Val2[3]=0#
+	}#
+	if(move[2]==1){#
+		Val2[2]=0#
+	}#
+	if(move[1]==1){#
+		Val2[1]=0#
+	}
+Val2
+t=table(roll)#
+	Val1=numeric(6)#
+	Val1[as.numeric(names(t))]=t#
+	Val2=Val1#
+	move=numeric(6)#
+	if(move[6]==1){	#removes already played values from consideration#
+		Val2[6]=0#
+	}#
+	if(move[5]==1){#
+		Val2[5]=0#
+	}#
+	if(move[4]==1){#
+		Val2[4]=0#
+	}#
+	if(move[3]==1){#
+		Val2[3]=0#
+	}#
+	if(move[2]==1){#
+		Val2[2]=0#
+	}#
+	if(move[1]==1){#
+		Val2[1]=0#
+	}
+Val2
+maxVal=which.max(Val2)#
+	faceVal=Val2[which.max(Val2)]#
+	num1=maxVal
+maxVal
+faceVal
+roll=sample(1:6,5,replace=T)#
+print(roll)#
+t=table(roll)#
+Val1=numeric(6)#
+Val1[as.numeric(names(t))]=t#
+print(Val1)
+single_roll=c(3,1,3,4,4)
+single_roll=sort(single_roll, method = "sh", index.return = FALSE)
+single_roll
+numlinear=0#
+	previous=0#
+	for(i in 1:length(single_roll)){#
+		if(single_roll[i] == previous+1){#
+			numlinear=numlinear+1#
+		}else{#
+			numlinear=1#
+		}#
+	}
+numlinear
+single_roll=c(3,1,3,2,4)
+single_roll=sort(single_roll, method = "sh", index.return = FALSE)
+single_roll
+numlinear=0#
+	previous=0#
+	for(i in 1:length(single_roll)){#
+		if(single_roll[i] == previous+1){#
+			numlinear=numlinear+1#
+		}else{#
+			numlinear=1#
+		}#
+	}
+numlinear
+diff(single_roll)
+Yahtzee = function(N){#
+for (i in 1:N){#
+score=0#
+first=0#
+many=0#
+score.ind=numeric(13)#
+while (sum(score.ind)<13){#
+message(score)#
+roll=sample(1:6,5,T)#
+t = max(as.numeric(names(table(roll))[which.max(table(roll))]))#
+tmproll = roll[roll!=t]#
+n = max(as.numeric(names(table(tmproll))[which.max(table(tmproll))]))#
+if (length(table(roll))==1){#
+score = score + 50*(1-first) + 100*many#
+first=1#
+many=1#
+score.ind[12]=1#
+	}else{                          #
+ 	 ut <- unique(roll)#
+  	keep = ut[which.max(tabulate(match(roll, ut)))]  # Says what number occurs the most#
+  	n = sum( roll == keep)                             # Says how many dice are that number #
+  	roll = c(rep.int(keep,n),sample(6:1,5-n,T))    # Rolls 5 die first roll then 5-ke#
+	if (length(table(roll))==1){#
+	score = score + 50*(1-first) + 100*many#
+	first=1#
+	many=1#
+	score.ind[12]=1#
+		}else{#
+ 		ut <- unique(roll);#
+  		keep = ut[which.max(tabulate(match(roll, ut)))];  # Says what number occurs the most#
+  		n = sum( roll == keep) #
+                            # Says how many dice are that number #
+  		roll = c(rep.int(keep,n),sample(6:1,5-n,T));    # Rolls 5 die first roll then 5-ke#
+		if (length(table(roll))==1){#
+		score = score + 50*(1-first) + 100*many#
+		first=1#
+		many=1#
+		score.ind[12] = 1#
+		}else{ #
+		if (score.ind[7]==0 & length(table(roll))== 3 & max(table(roll))==3){#
+		score = score + sum(roll)#
+		score.ind[7] = 1#
+			}else{ #
+			if (score.ind[8] ==0 & length(table(roll))== 2 & (max(table(roll))==4 | max(table(roll))==1)){#
+			score = score + sum(roll)#
+			score.ind[8] = 1#
+				}else{ #
+				if (score.ind[9]==0 & length(table(roll))== 2 &(max(table(roll))==3 | max(table(roll))==2)){#
+				score = score + 25#
+				score.ind[9] = 1#
+					}else{#
+					if (score.ind[10]==0 & length(table(roll))==4 & ((names(table(roll))[1]=="1" & names(table(roll))[4]=="4") | (names(table(roll))[1]=="2" & names(table(roll))[4]=="5") | (names(table(roll))[1]=="3" & names(table(roll))[4]=="6"))){#
+					score = score + 30#
+					score.ind[10] = 1#
+						}else{ #
+						if (score.ind[11]==0 & length(table(roll))==5 & ((names(table(roll))[1]=="1" & names(table(roll))[5]=="5")| (names(table(roll))[1]=="2"))){#
+						score = score + 40#
+						score.ind[11] = 1#
+							}else{ #
+							if (score.ind[t]==0){#
+							score = score + t*max(table(roll))#
+							score.ind[t] = 1#
+								}else{ #
+								if (score.ind[n]==0){#
+								score = score + n*max(table(tmproll))#
+								score.ind[n] =1#
+									}else{ #
+									if (length(table(roll))>2){#
+tmproll2 = tmproll[tmproll!=n]#
+u = max(as.numeric(names(table(tmproll2))[which.max(table(tmproll2))]))#
+									if (score.ind[u] ==0){#
+									score = score + u*max(table(tmproll2))#
+									score.ind[u] = 1#
+										}}else{ #
+										if (score.ind[13]==0){	#
+										score = score + sum(roll)#
+										score.ind[13]=1#
+											}else{ #
+											if (score.ind[11]==0 | score.ind[10]==0){#
+											score = score#
+											score.ind[11]=1#
+											score.ind[10]=1#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+}#
+return(score)#
+}
+Yahtzee(1)
+roll=c(1,2,3,3,4)
+numlinear=0#
+	previous=0#
+	for(i in 1:length(single_roll)){#
+		if(single_roll[i] == previous+1){#
+			numlinear=numlinear+1#
+		}else{#
+			numlinear=1#
+		}#
+	}
+numlinear
+single_roll=c(1,2,3,3,4)
+numlinear=0#
+	previous=0#
+	for(i in 1:length(single_roll)){#
+		if(single_roll[i] == previous+1){#
+			numlinear=numlinear+1#
+		}else{#
+			numlinear=1#
+		}#
+	}
+numlinear
+single_roll=c(1,2,3,4,5)
+numlinear=0#
+	previous=0#
+	for(i in 1:length(single_roll)){#
+		if(single_roll[i] == previous+1){#
+			numlinear=numlinear+1#
+		}else{#
+			numlinear=1#
+		}#
+	}
+numlinear
+if(0){print("hi")}
+if(1){print("hi")}
+diff(c(1,2,3,6,6))
+diff(c(1,2,4,5,6))
+tt=c()
+tt
+v=c(1,2,3,4,5,tt)
+v
+10^((.7183*log10(20))+0.6555)
+library(graphics)#
+library(plotrix)#
+#####ADD AND FORMAT DATA##########
+myData <- read.csv("~/Desktop/CPR by Issuer.csv")#
+myData <- myData[,-c(9, 22)]#
+myData <- myData[-c(1, 2),]#
+attach(myData)#
+##################################
+#
+#####CREATE MATRIX#######
+myMatrix <- matrix(data=NA, nrow=12, ncol=50)#
+for(r in 1:nrow(myData)){#
+  for(c in 9:20){#
+    myMatrix[c-8, r] <- as.numeric(as.vector(myData[r, c]))#
+  }#
+}#
+#################################
+####CREATE ROW TO SORT BY##################
+tmp <- c(0)#
+for(i in 1:50){#
+  ########CPR SPREAD##############
+  #a <- max(myMatrix[,i])-min(myMatrix[,i])#
+  ########3MO AVG CPR############
+  a <- mean(myMatrix[c(1:3), i])#
+  tmp <- c(tmp, a)#
+}#
+#
+tmp <- tmp[-1]#
+########################################
+myMatrix <- rbind(myMatrix, tmp)#
+#
+myMatrix <- rbind(myMatrix, c(1:50))#
+#
+myMatrix <- myMatrix[, order(myMatrix[13,])]#
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",yaxt='n')
+tmpIssuer <- Issuer#
+#
+tmpIssuer <- as.vector(as.character(tmpIssuer))#
+#
+tmpIssuer <- cbind(tmpIssuer, c(1:50))#
+names <- c("a")#
+for(i in 1:50){#
+  tmp <- tmpIssuer[which(as.numeric(tmpIssuer[,2])==myMatrix[14,i]),1]#
+  names <- c(names, tmp)#
+}#
+names <- names[-1]#
+#
+names <- cbind(names, c(1:50))#
+#
+##addtable2plot(-5, -7, names)#
+#
+Axis(side=2,labels=names[,1],at=1:50,las=1,cex.axis=.15)
+dev.new()#
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title")
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",cex.axis=.8)
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",cex.axis=.5)
+head(names)
+dev.new()
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="")
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n")
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n",yaxt="n")
+text(x=.5,y=1:50,labels=names[,1])
+text(x=.5,y=1:50,labels=names[,1],cex=.7)
+dev.new()#
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=1:50,labels=names[,1],cex=.7)
+dev.new()#
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=1:50,labels=names[,1],cex=.6)
+dev.new()#
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=1:50,labels=names[,1],cex=.45)
+dev.new()#
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=1:50,labels=names[,1],cex=.35)#
+text(x=1,y=1:50,labels=1:50,cex=.35)
+dev.new()#
+plot(c(0,1),c(1,100),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=seq(2,100,2),labels=names[,1],cex=.35)#
+text(x=1,y=seq(2,200,2),labels=1:50,cex=.35)
+dev.new()#
+plot(c(0,1),c(1,100),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=1:50,labels=names[,1],cex=.35)#
+text(x=1,y=1:50,labels=1:50,cex=.35)
+dev.new()#
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=1:50,labels=names[,1],cex=.35)#
+text(x=1,y=1:50,labels=1:50,cex=.35)
+dev.new()#
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",cex.axis=.5,yaxt='n')#
+Axis(side=2,at=1:50,labels=1:50)
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",cex.axis=.5,yaxt='n')#
+Axis(side=2,at=1:50,labels=1:50,cex.axis=.5)
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",cex.axis=.5,yaxt='n')#
+Axis(side=2,at=1:50,labels=1:50,cex.axis=.35)
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",cex.axis=.5,yaxt='n')#
+Axis(side=2,at=1:50,labels=1:50,cex.axis=.35,las=2)#
+#####Create table to add to plot
+par(mfrow=c(1,2))#
+plot(c(0,1),c(1,50),type="n",xlab="",ylab="",xaxt="n",yaxt="n")#
+text(x=.5,y=1:50,labels=names[,1],cex=.35)#
+text(x=1,y=1:50,labels=1:50,cex=.35)#
+boxplot.matrix(myMatrix[c(1:12), ], use.cols=TRUE, horizontal=TRUE,#
+               boxwex=1, col = topo.colors(7), #
+               xlab="CPR", main="Insert Title",cex.axis=.5,yaxt='n')#
+Axis(side=2,at=1:50,labels=1:50,cex.axis=.35,las=2)
+stopsign = function(N,v,h,x,y) {#
+  time=numeric(N)#
+  Total=0#
+  w=2#
+  z=0.5#
+  k=1#
+  for(e in 1:N){#
+  carv=sample(1:y,v,replace=F)#
+  carh=sample(1:y,h,replace=F)#
+  sort(carv, decreasing=F)#
+  sort(carh, decreasing=F)#
+  creepv=0#
+  creeph=0#
+  frontwaitv=0#
+  frontwaith=0#
+  interact=0#
+  for(i in 1:v){#
+    for(j in 2:v){#
+      if((carv[j]-carv[i])<=x){#
+        creepv=creepv+1#
+      }#
+      if((carv[j]-carv[i])<=w){#
+        frontwaitv=frontwaitv+1#
+      }#
+    }#
+  }#
+  for(o in 1:h){#
+    for(u in 2:h){#
+      if((carh[u]-carh[o])<=x){#
+        creeph=creeph+1#
+      }#
+      if((carh[u]-carh[o])<=w){#
+        frontwaith=frontwaith+1#
+      }#
+    }#
+  }#
+  for(o in 1:h){#
+    for(i in 1:v){#
+      if(abs(carv[i]-carh[o])<=z){#
+        interact=interact+1#
+      }#
+    }#
+  }#
+  Total=interact*z+(frontwaith+frontwaitv)*(w)+(creeph+creepv)*(k)+v*(2*x+w)#
+  time[e]=Total#
+  }#
+  return(time)#
+}#
+mean(stopsign(1000,6,6,1,60))
+hist(replicate(100, mean(stopsign(1000,6,6,1,60))))
+33299.01+3897.50
+1300*12*30
+68/75
+fg=function(m1,m2,pres,tt,grp,ww,quiz,fin,part){
+return(7.5*m1+7.5*m2+15*pres+15*tt+5*grp+15*ww+qr*quiz+10*fin+10*part)}
+(1+ 10/12 + .95)/3
+fg(.907,.87,1,1,1,1,.928,.9,1)
+fg=function(m1,m2,pres,tt,grp,ww,quiz,fin,part){
+return(7.5*m1+7.5*m2+15*pres+15*tt+5*grp+15*ww+15*quiz+10*fin+10*part)}
+fg(.907,.87,1,1,1,1,.928,.9,1)
+fg(.907,.87,1,1,1,1,.928,.7,1)
+fg(.907,.87,1,1,1,1,.928,.65,1)
+fg(.907,.87,1,1,1,1,.928,.60,1)
+fg(.907,.87,1,1,1,1,.928,.55,1)
+light2 <- function(N,v,h,x,y){#
+  time=numeric(N)#
+  v=min(v,h)#
+  h=max(v,h)#
+  for(e in 1:N){#
+  carv=sample(1:y,v,replace=F)#
+  carh=sample(1:y,h,replace=F)#
+  carv=sort(carv, decreasing=F)#
+  carh=sort(carh, decreasing=F)#
+  total=0#
+  creepv=0#
+  creeph=0#
+  accelv=0#
+  accelh=0#
+  frontwaitv=0#
+  frontwaith=0#
+  g = (v-2*x*((h-v)))/(h+v)#
+  waittimev=0#
+  waittimeh=0#
+  vtime = g*y#
+  htime = (1-g)*y#
+  for(i in 1:v-1){#
+    if(carv[i]<=vtime){ ## Results with "argument of length zero"#
+      waittimev=waittimev+(vtime-carv[i])#
+      creepv=creepv+1 #still need to develop#
+      accelv=accelv+2#
+    }#
+  }#
+  for(j in 1:h-1){#
+    if(carv[j]<=htime){#
+      waittimev=waittimev+(htime-carv[j])#
+      creeph=creeph+1#
+      accelh=accelh+2#
+    }#
+  }#
+  total=waittimev+waittimeh+(accelv+accelh)*x#
+  time[e]=total#
+  }#
+  return(time)#
+}
+light2(10,6,6,60,1)
+light2(10,6,6,60,60)
+light2 <- function(N,v,h,x,y){#
+  time=numeric(N)#
+  v=min(v,h)#
+  h=max(v,h)#
+  for(e in 1:N){#
+  carv=sample(1:y,v,replace=F)#
+  message(paste("carv: ",carv,sep=""))#
+  carh=sample(1:y,h,replace=F)#
+  carv=sort(carv, decreasing=F)#
+    message(paste("carv: ",carv,sep=""))#
+  carh=sort(carh, decreasing=F)#
+  total=0#
+  creepv=0#
+  creeph=0#
+  accelv=0#
+  accelh=0#
+  frontwaitv=0#
+  frontwaith=0#
+  g = (v-2*x*((h-v)))/(h+v)#
+  waittimev=0#
+  waittimeh=0#
+  vtime = g*y#
+  htime = (1-g)*y#
+  for(i in 1:v-1){#
+    if(carv[i]<=vtime){ ## Results with "argument of length zero"#
+      waittimev=waittimev+(vtime-carv[i])#
+      creepv=creepv+1 #still need to develop#
+      accelv=accelv+2#
+    }#
+  }#
+  for(j in 1:h-1){#
+    if(carv[j]<=htime){#
+      waittimev=waittimev+(htime-carv[j])#
+      creeph=creeph+1#
+      accelh=accelh+2#
+    }#
+  }#
+  total=waittimev+waittimeh+(accelv+accelh)*x#
+  time[e]=total#
+  }#
+  return(time)#
+}
+light2(10,6,6,60,60)
+light2 <- function(N,v,h,x,y){#
+  time=numeric(N)#
+  v=min(v,h)#
+  h=max(v,h)#
+  for(e in 1:N){#
+  carv=sample(1:y,v,replace=F)#
+  carh=sample(1:y,h,replace=F)#
+  carv=sort(carv, decreasing=F)#
+  carh=sort(carh, decreasing=F)#
+  total=0#
+  creepv=0#
+  creeph=0#
+  accelv=0#
+  accelh=0#
+  frontwaitv=0#
+  frontwaith=0#
+  g = (v-2*x*((h-v)))/(h+v)#
+  waittimev=0#
+  waittimeh=0#
+  vtime = g*y#
+  htime = (1-g)*y#
+  for(i in 1:(v-1)){#
+    if(carv[i]<=vtime){ ## Results with "argument of length zero"#
+      waittimev=waittimev+(vtime-carv[i])#
+      creepv=creepv+1 #still need to develop#
+      accelv=accelv+2#
+    }#
+  }#
+  for(j in 1:h-1){#
+    if(carv[j]<=htime){#
+      waittimev=waittimev+(htime-carv[j])#
+      creeph=creeph+1#
+      accelh=accelh+2#
+    }#
+  }#
+  total=waittimev+waittimeh+(accelv+accelh)*x#
+  time[e]=total#
+  }#
+  return(time)#
+}
+light2(10,6,6,60,60)
+light2 <- function(N,v,h,x,y){#
+  time=numeric(N)#
+  v=min(v,h)#
+  h=max(v,h)#
+  for(e in 1:N){#
+  carv=sample(1:y,v,replace=F)#
+  carh=sample(1:y,h,replace=F)#
+  carv=sort(carv, decreasing=F)#
+  carh=sort(carh, decreasing=F)#
+  total=0#
+  creepv=0#
+  creeph=0#
+  accelv=0#
+  accelh=0#
+  frontwaitv=0#
+  frontwaith=0#
+  g = (v-2*x*((h-v)))/(h+v)#
+  waittimev=0#
+  waittimeh=0#
+  vtime = g*y#
+  htime = (1-g)*y#
+  for(i in 1:(v-1)){#
+    if(carv[i]<=vtime){ ## Results with "argument of length zero"#
+      waittimev=waittimev+(vtime-carv[i])#
+      creepv=creepv+1 #still need to develop#
+      accelv=accelv+2#
+    }#
+  }#
+  for(j in 1:(h-1)){#
+    if(carv[j]<=htime){#
+      waittimev=waittimev+(htime-carv[j])#
+      creeph=creeph+1#
+      accelh=accelh+2#
+    }#
+  }#
+  total=waittimev+waittimeh+(accelv+accelh)*x#
+  time[e]=total#
+  }#
+  return(time)#
+}
+light2(10,6,6,60,60)
+fg=function(e1,e2,pres,tt,grp,ww,q,fin,part){return(7.5*e1+7.5*e2+15*pres+15*tt+5*grp+15*ww+15*q+10*fin+10*part)}
+fg(68/75,.88,1,1,1,.99,.89,.8,1)
+fg(68/75,.88,1,1,1,.99,.89,.7,1)
+fg(68/75,.88,1,1,1,.99,.89,.6,1)
+fg(68/75,.88,1,1,1,.99,.89,.65,1)
+sqrt(.9*.1/1000)
+sds=c(1.053379,1.035899,1.035185,1.036584,1.034705)
+var(sds)
+qchisq(.95,4)
+4*var(sds)/qchisq(.95,4)
+sqrt(4*var(sds)/qchisq(.95,4))
+sqrt(4*var(sds)/qchisq(.05,4))
+sqrt(4*var(sds)/qchisq(.05,4))/1.03915
+yahoostock=read.table(file.choose(),header=T/F,sep="\t")
+yahoostock
+T/F
+lifeexpect=read.table(file.choose(),sep="\t",header=T)
+lifeexpect
+mccoy=read.table("mccoy.txt",sep="\t", header=T)
+setwd("~/Desktop/186/Labs_SU15/intro_lab/")
+mccoy=read.table("mccoy.txt",sep="\t", header=T)
+mccoy

@@ -1,0 +1,44 @@
+STOPPED AT PISAPATI
+
+#1b - try not to look at overall numbers in one category of one variable as a basis for relationships between two variables.  I think you were getting at the right logic initially, but an even simpler way of looking at the relationship is noting that of those men without tattoos, only ~20% had any piercings, but amongst those with tattoos, ~52% had at least piercing.
+
+#1b - you wrote about these as if they were row percents (e.g. for those that do not have piercings…).   You also noted that % with tattoo increase with increasing number of piercings, but this isn't true going from 0 to 1.
+
+
+#1c - this should be one of the two possible hypothesis testing conclusions --> reject H_o or fail to reject?
+
+#1c - Colloquially, it would be OK to talk about correlation (as it means relationship), but statistically, this is not OK.  Correlation has a strict meaning for us - it measures the strength/direction of a linear relationship between two quantitative variables.  Just use the word relationship instead of correlation.  Then, the alternative would just be the opposite statement, not one that implies direction.  H_o: there is no relationship between X and Y vs. H_a: there is a relationship between X and Y.
+
+#1d - statistically significant = a relationship that is unlikely to have appeared by chance alone.  That is, it is suggestive of a real relationship in the population.
+
+#2b - just looking for an interpretation of the 88% --> 88% of women reported never having cheated.
+
+#2c - Sample sizes simply don't matter.  I can sample 1000 democrats and 100 republicans and still discern differences in opinion.  Instead, be thinking of relative risk.  women are nearly 6x as likely to report cheating!!  This is a huge rel. risk.  They are, as you noted, 10% higher than men, but it is not the same as if it had been 40% vs. 50% --> this yields a RR of 1.25, not 6 as in our example.
+
+#2c - true, we need X^2 to be certain, but we can still have some intuition about whether or not there might be a relationship. We talked in class about using relative risk as a measure of the magnitude of the relationship.  Here, women are nearly 6x as likely to report cheating.  This seems substantial to me.  This is what should jump out at you.
+
+#2c - be thinking of relative risk.  women are nearly 6x as likely to report cheating!!  This is a huge rel. risk.  There is a ~10% difference, but it is not the same as if it had been 40% vs. 50% --> this yields a RR of 1.25, not 6 as in our example.
+
+
+#2d - you said the X^2 value was bigger than p-value —> not the right comparison.  Omitting this sentiment, everything else looks good.  Same for #3c(ii) and #4 and #5c.
+
+#2d - it is statistically significant, because the p-value is small.
+
+#2d - pet peeve: don't use the word correlated.  Colloquially, this might be fine, but statistically, correlation has a very specific definition.  Just talk about relationships with categorical variables, and not correlations.
+
+
+
+#2e - Here, just simply state the conclusion in terms of what you do with the null (can you reject it, or do you fail to reject?).  Generally looking for a conclusion in terms of the hypotheses.
+
+#3b - that would also be true if the proportions right-handed were 55% and 95% (both more likely to be righties).  What you want to say is that they are right handed at basically the same rate!
+
+#3b - Also, both here and in (c-ii), you wrote about the null being true.  NOOO.  We never accept H_o.  We either (1) reject H_o/accept H_a or (2) fail to reject H_o --> have insufficient evidence to accept H_a.  That might seem subtle, but it is the difference between proclaiming a defendant's innocence, or merely stating that we cannot convict him/her beyond the shadow of a doubt.
+
+#3c(ii) - careful with your language here.  This sounds like you're accepting the null.  You just want to say we don't have evidence of a significant relationship.
+
+
+In #4, I think this was a typo, but you compared p-value to .5 (not .05, as you should).  Same in #5c.
+
+#5d - You are right that a scatterplot is the better way to think about this.  So why is X^2 invalid?  X^2 is for categorical variables, while scatterplots/regression are for quantitative variables, which is what we're dealing with here.
+
+#5d - I think you'd be surprised - this relationship is likely to be quite strong.  Regardless, you are right that a scatterplot is the better way to think about this.  So why is X^2 invalid?  X^2 is for categorical variables, while scatterplots/regression are for quantitative variables, which is what we're dealing with here.

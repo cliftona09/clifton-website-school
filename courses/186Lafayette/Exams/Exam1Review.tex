@@ -1,0 +1,176 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate,fancyhdr}
+\openup 5pt
+%\author{Ann Clifton\\University of South Carolina}
+\title{Math 186: Exam 1 Review}
+%\date{September 27, 2017}
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+\usepackage[margin=.5in]{geometry}
+
+\renewcommand{\qedsymbol}{}
+
+\begin{document}
+\maketitle
+
+%\vspace{0.2in}
+%\makebox[\textwidth]{Name:\enspace\hrulefill}
+%\vspace{0.2in}
+
+
+\newcounter{itemcounter}
+\begin{list}
+{\text{\arabic{itemcounter}.}}
+{\usecounter{itemcounter}\leftmargin=1.4em}
+
+
+\item Let's talk about the most recent Emmy awards! Some of you may be familiar with the Rotten Tomatoes website, which collects reviews from various critics to provide an overall rating of a TV show from 0-100.  Suppose we're interested in seeing whether a TV show's Rotten Tomatoes rating is a good predictor of how many Primetime Emmy nominations it will receive.  The data for several of last year's shows is below.
+\begin{center}
+$\begin{array}{|c|c|c|}
+\hline
+\text{{\bf TV Show}}&\text{\bf{Rotten Tomatoes Rating}}&\text{\bf{\# of Emmy Nominations}}\\ 
+\hline
+\text{This is Us}& 91 & 3\\
+\hline
+\text{Game of Thrones}& 94 & 7\\
+\hline
+\text{The Marvelous Mrs. Maisel} & 94 & 6\\
+\hline
+\text{The Crown} & 91 & 6\\
+\hline
+\text{The Americans} & 99 & 4\\
+\hline
+\text{Westworld} & 86 & 5\\
+\hline
+\text{Barry} & 98 & 6\\
+\hline
+\text{The Handmaid's Tale} & 91 & 8\\
+\hline
+\text{Atlanta} & 98 & 8\\
+\hline
+\end{array}$
+\end{center}
+
+\subitem(a) Create a scatterplot of the data.  Make sure to label your axes!
+
+\vspace{1in}
+
+\subitem(b) The least-squares regression line for this data is given by $y=0.415+0.056x$.  Interpret the slope and $y$-intercept in the context of the problem.
+
+\vspace{1in}
+
+\subitem(c) Using the regression equation from (b), predict the number of Emmy nominations for a show that receives a Rotten Tomatoes rating of 82.
+
+\vspace{1in}
+
+\subitem(d) The correlation value for this data set is $r=0.148$.  What percentage of the variation in Emmy nominations can be explained by the Rotten Tomatoes rating? Do you think that the Rotten Tomatoes rating is a good predictor of Emmy nominations? Why or why not?
+
+\newpage
+
+\item Last hurricane season, Hurricane Florence dumped record amounts of rain over the Carolinas, causing extreme flooding in some areas.  The following is a sample of total rain amounts (in inches) from nine locations across North and South Carolina.
+\begin{center}
+$\begin{array}{ccccccccccccccccc}
+10 & & 16 & & 22 & & 12 & & 34 & & 29 & & 25 & & 10 & & 27\\
+\end{array}$
+\end{center}
+
+\subitem(a) Find the 5-number summary for this data set.
+
+\vspace{1in}
+
+\subitem(b) Find the mean and standard deviation.
+
+\vspace{1in}
+
+\subitem(c) Are there any outliers? How do you know?
+
+\vspace{1in}
+
+\item In 1975, three researchers explored whether injecting silver iodide into cumulus clouds would lead to increased rainfall.  For 52 days, they flew a plane through a cloud.  Each day, it was decided at random whether or not the cloud would be seeded with silver iodide.  For the next 24 hours, radar was used to measure the volume of rainfall from the selected cloud.  Answer the following:
+
+\subitem(a) Is this an experiment or an observational study?
+
+\vspace{1in}
+
+\subitem(b) Identify the explanatory variable and the response variable.
+
+\vspace{1in}
+
+\subitem(c) Circle those components that are used in this study:
+\begin{center}
+{\bf Control group}\hspace{.2in}{\bf Placebo}\hspace{.2in}{\bf Matched-pairs design}\hspace{.2in}{\bf Randomization}
+\end{center}
+
+\newpage
+
+\item Recently, Elon Musk's SpaceX Corporation announced that Japanese billionaire Yusaka Maezawa will be their first passenger to go to the moon.  Would you go to the moon if given the opportunity? Suppose we polled $n=100$ Lafayette students and obtained the following two-way contingency table:
+\begin{center}
+$\begin{array}{c|c|c|c}
+ & \text{\bf Would Go} & \text{\bf Would Not Go} & \text{\bf Total}\\
+ \hline
+ \text{\bf Men} & 24 & 20 & 44\\
+ \hline
+ \text{\bf Women} & 14 & 42 & 56\\
+ \hline
+ \text{\bf Total} & 38 & 62 & 100\\
+ \end{array}$
+ \end{center}
+ 
+ \subitem(a) Calculate the odds ratio of men wanting to go to the moon as compared to women wanting to go.  Interpret your value in the context of the problem.
+
+\vspace{1in}
+
+\subitem(b) Of the people who would not go to the moon, what percentage were women?  What percentage were men?
+
+\vspace{1in}
+
+\item Suppose that only 2\% of individuals undergoing a particular medical test have the disease that the test is intended to identify.  If an individual has the disease, the probability that the test indicates the presence of the disease is 0.98.  If an individual does not have the disease, the test gives a false positive 5\% of the time.  If the test result for an individual is positive, what is the probability that this individual actually has the disease?
+
+\vspace{2in}
+
+\item According to one study, C-sections are used in 30\% of US births with a 0.2\% infant mortality rate.  In non-C-section births, 99.1\% of infants survive.  Overall, what percent of newborns survive in the US?
+
+\newpage
+
+\item Determine the following probabilities:
+
+\subitem(a) The probability that the sum of two rolled dice will be 3.
+
+\vspace{1in}
+
+\subitem(b) The probability of selecting a heart from a standard deck of cards.
+
+\vspace{1in}
+
+\subitem(c) The probability of rolling a 2 or a 4 on a single die.
+
+\vspace{1in}
+
+\subitem(d) The probability of flipping a heads on a coin or rolling a 3 on a single die.
+
+\vspace{1in}
+
+\subitem(e) The probability of flipping a heads on a coin and rolling a 3 on a single die.
+
+\vspace{1in}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{list}
+\end{document}

@@ -1,0 +1,104 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate,fancyhdr}
+\openup 5pt
+%\author{Ann Clifton\\University of South Carolina}
+\title{Math 186: Ch. 7 - Probability}
+%\date{September 27, 2017}
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+\usepackage[margin=1in]{geometry}
+
+\renewcommand{\qedsymbol}{}
+
+\begin{document}
+\maketitle
+
+%\vspace{0.2in}
+%\makebox[\textwidth]{Name:\enspace\hrulefill}
+%\vspace{0.2in}
+
+
+\newcounter{itemcounter}
+\begin{list}
+{\text{\arabic{itemcounter}.}}
+{\usecounter{itemcounter}\leftmargin=1.4em}
+
+
+\item[ ] {\bf Key Probability Definitions and Notation}\\
+
+\subitem A {\bf simple event} is a unique possible outcome of a random circumstance.\\
+
+\subitem The {\bf sample space} for a random circumstance is the collection of all simple events.\\
+
+\subitem A {\bf compound event} is an event that includes two or more simple events.\\
+
+\subitem An {\bf event} is any collection of one or more simple events in the sample space; events can be simple events or compound events.\\
+
+\subitem Events are often written using capital letters $A$, $B$, $C$, and so on, and their probabilities are written as $P(A)$, $P(B)$, $P(C)$, and so on.\\
+
+\subitem One event is the {\bf complement} of another event if the two events do not contain any of the same simple events {\it and} together they cover the entire sample space.  For an event $A$, the complement is denoted $A^c$.\\
+
+\subitem Two events are {\bf mutually exclusive} if they do not contain any of the same simple events (outcomes); that is, the two events cannot occur simultaneously.  We also say two such events are {\bf disjoint}.\\
+
+\subitem Two events are {\bf independent} of each other if knowing that one will occur (or has occurred) does not change the probability that the other occurs.\\
+
+\subitem Two events are {\bf dependent} if knowing that one will occur (or has occurred) changes the probability that the other occurs.\\
+
+\subitem The {\bf conditional probability of the event $B$, given that the event $A$ has occurred or will occur}, is the long-run relative frequency with which event $B$ occurs when circumstances are such that $A$ has occurred or will occur.  We denote this as $P(B\vert A)$.\\
+
+\subitem Probabilities are always between 0 and 1 and the sum of the probabilities over all possible simple events is 1.
+
+\newpage
+
+\item[] {\bf Probability Rules}\\ \\
+
+\item[] {\bf Simple Probability:} $$P(A)=\frac{\vert A\vert}{\vert S\vert}$$ where $\vert A\vert$ is the number of ways event $A$ can occur and $\vert S\vert$ is the total number of events in the sample space.
+
+\vspace{.2in}
+
+\item[] {\bf Complementary Events:} $$P(A^c)=1-P(A)$$
+
+\vspace{.2in}
+
+\item[] {\bf Addition and Multiplication Rules:}
+
+$$\begin{array}{|r|ccccc}
+\text{When Events Are:}&P(A {\text{ or }} B) \text{ is:}&\qquad&P(A {\text{ and }} B) \text{ is:}&\qquad&P(A\vert B) \text{ is:}\\ 
+\hline
+&\\
+\text{Mutually Exclusive}& P(A)+P(B) && 0 && 0 \\ & \\ & \\
+\text{Independent}& P(A)+P(B)-P(A)P(B) && P(A)P(B) && P(A) \\ & \\ & \\
+\text{Any}& P(A)+P(B)-P(A{\text{ and }}B) && P(A)P(B\vert A) &&\dfrac{P(A{\text{ and }}B)}{P(B)}\\ & \\ & \\
+\end{array}$$
+
+\vspace{.2in}
+
+\item[] {\bf Bayes' Rule:}
+
+$$P(A\vert B)=\frac{P(A{\text{ and }}B)}{P(B\vert A)P(A)+P(B\vert A^c)P(A^c)}$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{list}
+\end{document}

@@ -1,0 +1,146 @@
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+ls()
+head(ex5)
+with(ex5,table(Gender,FavMusic))
+prop.table(with(ex5,table(Gender,FavMusic)),1)
+.05*1.18
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+prop.table(with(ex5,table(Gender,FavMusic)))
+with(ex5,table(Gender,FavMusic))
+sum(with(ex5,table(Gender,FavMusic)))
+prop.table(with(ex5,table(Gender,FavMusic)),1)
+prop.table(with(ex5,table(Gender,FavMusic)),2)
+.16+.12+.09+.08
+-2*37/38 + 68/38
+pbinom(10,10,.5)
+dbinom(10,10,.5)
+sum(dbinom(7:10,10,.5))
+dbinom(8,10,.5)
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex2.R")
+ls()
+head(ex2)
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+head(ex5)
+table(ex5$Gender,ex5$FavMusic)
+load("/Users/gauglert/Desktop/186/FA15/survey2007PSU.R")
+ls()
+names(survey)
+with(survey,table(Relimport))
+names(with(survey,table(Relimport)))
+survey$Relimport =as.character(survey$Relimport)#
+survey$Relimport[survey$Relimport %in% c("                ","Not importantant","Not importantt  ","Very importantnt")]=NA
+with(survey,table(Relimport))
+with(survey,table(ReadBibl))
+names(with(survey,table(ReadBibl)))
+survey$ReadBibl =as.character(survey$ReadBibl)#
+survey$ReadBibl[survey$ReadBibl %in% c("               ","Dailyin a while","Neverin a while","Oftenin a while")]=NA
+with(survey,table(ReadBibl))
+survey$ReadBibl[survey$ReadBibl %in% c("Daily          ","Often          ")]="Daily or Often"
+with(survey,table(ReadBibl))
+names(survey)
+with(survey,table(RelPref))
+names(with(survey,table(RelPref)))
+survey$RelPref =as.character(survey$RelPref)#
+survey$RelPref[survey$RelPref %in% c("          ","Agnosticnt","Atheistant","Atheistc  ","Catholicnt","Jewishic  ","Moslemtant","Otherh    ","Otherlic  ","Otherstant","Othertic  ")]=NA
+with(survey,table(RelPref))
+survey$RelPref[survey$RelPref %in% c("Hindi     ","Moslem    ")]="Other     "
+with(survey,table(RelPref))
+with(survey,table(God_))
+survey$God_ =as.character(survey$God_)#
+survey$God_[survey$God_ %in% c("Nos     ","Yes sure","        ")]=NA
+with(survey,table(God_))
+with(survey,table(RelServs))
+with(survey,table(DiffRel_))
+survey$DiffRel_ =as.character(survey$DiffRel_)#
+survey$DiffRel_[survey$DiffRel_ %in% c("Nos     ","Yes sure","        ")]=NA
+with(survey,table(DiffRel_))
+with(survey,table(ViewWt))
+with(survey,table(Handed))
+names(with(survey,table(Handed)))
+survey$Handed =as.character(survey$Handed)#
+survey$Handed[survey$Handed %in% c("Botht handed","Both handed ","            ","Left handedd")]=NA
+with(survey,table(Handed))
+names(survey)
+with(survey,table(LongFng))
+names(with(survey,table(LongFng)))
+survey$LongFng =as.character(survey$LongFng)#
+survey$LongFng[survey$LongFng %in% c("     ","Ringx ","Samex")]=NA
+with(survey,table(LongFng))
+survey$LongFng =as.character(survey$LongFng)#
+survey$LongFng[survey$LongFng %in% c("     ","Ringx","Samex")]=NA
+with(survey,table(LongFng))
+with(survey,table(EyeSight))
+names(with(survey,table(EyeSight)))
+survey$EyeSight =as.character(survey$EyeSight)#
+survey$EyeSight[survey$EyeSight %in% c("            ","Far sightedd","Neitherghted","Neitherhted ")]=NA
+with(survey,table(EyeSight))
+names(survey)
+with(survey,table(SelfAttr))
+names(with(survey,table(SelfAttr)))
+survey$SelfAttr =as.character(survey$SelfAttr)#
+survey$SelfAttr[survey$SelfAttr %in% c("Nos   ","Nosure","      ","Yesure")]=NA
+with(survey,table(SelfAttr))
+with(survey,table(Stress))
+with(survey,table(Looks))
+with(survey,table(DateRace))
+names(with(survey,table(DateRace)))
+survey$DateRace =as.character(survey$DateRace)#
+survey$DateRace[survey$DateRace %in% c("Nos","   ")]=NA
+with(survey,table(DateRace))
+with(survey,table(DatePhysChall))
+names(with(survey,table(DatePhysChall)))
+survey$DatePhysChall =as.character(survey$DatePhysChall)#
+survey$DatePhysChall[survey$DatePhysChall %in% c("Nos","   ")]=NA
+with(survey,table(MakeFrnds))
+names(with(survey,table(MakeFrnds)))
+survey$MakeFrnds =as.character(survey$MakeFrnds)#
+survey$MakeFrnds[survey$MakeFrnds %in% c("No preferenceer","               ","Same genderce  ","Same gendernder")]=NA
+with(survey,table(MakeFrnds))
+with(survey,table(ImportFeat))
+with(survey,table(RaceDated))
+with(survey,table(RaceDated_))
+names(with(survey,table(RaceDated_)))
+survey$RaceDated_ =as.character(survey$RaceDated_)#
+survey$RaceDated_[survey$RaceDated_ %in% c("Nos","   ")]=NA
+names(with(survey,table(ImportFeat)))
+survey$ImportFeat =as.character(survey$ImportFeat)#
+survey$ImportFeat[survey$ImportFeat %in% c("               ","Looksnality    ","Looksto talk to","Loyaltyf humor ","Loyaltylity    ","Othernality    ","Otherto talk to","Personalityk to","Personalitymor ","Sense of humoro","Trust of humor ","Trusth         ","Trustnality    ","Trustto talk to","Trustty        ","Wealth         ")]=NA
+with(survey,table(ImportFeat))
+names(survey)
+with(survey,table(PeopKiss))
+with(survey,table(DatePerls))
+save(survey,file="/Users/gauglert/Desktop/186/FA15/survey2007PSU.R")
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+with(ex5,table(Gender,FavMusic))
+t=with(ex5,table(Gender,FavMusic))
+prop.table(t,1)
+sum(t)
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+ls()
+head(ex5)
+with(ex5,table(Gender,FavMusic))
+apply(with(ex5,table(Gender,FavMusic)),1,sum)
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+ls()
+names(ex5)
+with(ex5,table(Gender,FavMusic))
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+with(ex5,table(Gender,FavMusic))
+prop.table(with(ex5,table(Gender,FavMusic)),1)
+load("/Users/gauglert/Desktop/186/Labs_SU15/chi2/chi2_ex5.R")
+names(ex5)
+with(ex5,table(Gender,FavMusic))
+prop.table(with(ex5,table(Gender,FavMusic)),1)
+prop.table(with(ex5,table(Gender,FavMusic)),2)
+prop.table(with(ex5,table(Gender,FavMusic)))
+c(.1,.32,.56,.02)
+sum(1:4 * c(.1,.32,.56,.02))
+sum(1:4 * c(.16,.06,.03,.02))
+37/38
+sum( c(-2,68) * c(37/38, 1/38))
+sum( c(-2,70) * c(37/38, 1/38))
+sum( c(-2,72) * c(37/38, 1/38))
+72*.0263
+sum( -2*37/38, 72*1/38)
+4*(1/7)*(6/7)^3
+75*1.5

@@ -1,0 +1,7 @@
+load("/Users/gauglert/Desktop/186/Labs_SU15/summaries_of_dataFA16/summaries_ex3.R")
+ls()
+ex3=ex4
+save(ex3, file="~/Desktop/186/Labs_SU15/summaries_of_dataFA16/summaries_ex3.R")
+load("/Users/gauglert/Desktop/186/Labs_SU15/summaries_of_dataFA16/summaries_ex3.R")
+ls()
+load("/Users/gauglert/Desktop/186/Labs_SU15/summaries_of_dataFA16/summaries_ex2.R")

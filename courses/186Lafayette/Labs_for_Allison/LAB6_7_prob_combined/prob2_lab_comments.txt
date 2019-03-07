@@ -1,0 +1,135 @@
+#1a - no fixed # of trials
+
+#1b - P(Ace) changes after each draw (without replacement) —> also means the trials are not independent of one another.
+
+#1a is indep., and #1b does have a fixed # (5) of trials.
+
+#2a 
+> pbinom(5,100,.11)
+[1] 0.03024574
+
+#2b 
+> dbinom(50,500,.1)
+[1] 0.05937067
+
+#2c 
+> pbinom(13,20,.5)
+[1] 0.9423409
+
+#2d 
+> dbinom(5,10,.5)
+[1] 0.2460938
+
+#2e 
+> pbinom(3,12,1/6)
+[1] 0.8748219
+
+#2f 
+> 1-pbinom(25,100,.2)
+[1] 0.08747538
+
+#2g 
+> dbinom(0,365,1/1000)
+[1] 0.6940699
+
+
+#3a
+>pnorm(-1.333333)0.09121P(z < -1.333333) = 0.0918
+
+#3b
+> pnorm(.5)0.69146P(z < 0.5) = .6915  #3c
+> pnorm(2)0.9772499 ==>  1-0.9772499 = 0.02275P(z > 2) = 0.9772 = 1- 0.9772 = 0.0228#3d
+x= (.84)(6)+18= 23.04 inches 
+
+#4a
+> pnorm(1.333333)0.90879#4b
+90.82 % (or 90.88%) of all students at Lafayette sleep less than or equal to 9 hours. 
+
+#4c - 1.333333
+
+#4d
+P(z < 1.333333) = .9082#4e
+z =  (6-7)/(1.5) =  -0.67              Probability = 1- .7486 = 0.2514 
+
+#4f
+> pnorm(6,7,1.5)0.2524925#4g
+1-0.2524925 = 0.7475075
+
+#4h
+> pnorm(10,7,1.5)0.9772499 ==> 1-0.9772499 = 0.0227501#4i
+.0228 
+
+#4j - symmetry
+
+#4k
+x = (-1.96)(1.5) +7 = 4.06 hours
+
+(1.34)(1.5)+7 = 9.01 hours. 
+
+
+For #3, I wanted you to do it both with the Normal CDF table, and in R (this is to reinforce that you're using the table correctly).  You only gave the R answers.
+
+
+
+LACROSSE
+
+#1b - P(Ace) changes after each draw (without replacement) —> also means the trials are not independent of one another.
+
+
+#2c 
+
+> pbinom(13,20,.5)
+
+[1] 0.9423409
+
+
+
+#2f 
+
+> 1-pbinom(25,100,.2)
+
+[1] 0.08747538
+
+
+
+CONRAD:
+#1a - no fixed # of trials
+
+
+
+#1b - P(Ace) changes after each draw (without replacement) —> also means the trials are not independent of one another.  (# of trials =5 is fixed!)
+
+
+
+#2e 
+
+> pbinom(3,12,1/6)
+
+[1] 0.8748219
+
+
+
+#2f 
+
+> 1-pbinom(25,100,.2)
+
+[1] 0.08747538
+
+
+
+#3c
+
+> pnorm(2)
+
+0.9772499 ==>  1-0.9772499 = 0.02275
+
+
+
+P(z > 2) = 0.9772 = 1- 0.9772 = 0.0228
+
+
+
+#3d - 18+6(.85) DOES NOT EQUAL 69...
+
+
+

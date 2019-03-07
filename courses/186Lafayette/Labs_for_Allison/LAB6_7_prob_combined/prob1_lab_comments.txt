@@ -1,0 +1,54 @@
+#1a - these are relative freq. probs.  We ask a large number of people, and count the relative number of times a response occurs.
+
+#1c - wanted you to describe the complementary event (1-5 rating), not calculate its probability
+
+#1d - second part: 1-.26 = .74
+
+#1e - they are mutually exclusive *because they cannot both happen at the same time*
+
+#1i - they are dependent because you can see that the genders differ in their propensity to give high/low ratings.  If they were independent, the probabilities of high/low ratings wouldn’t differ by gender.
+
+#1j - these are mutually exclusive events, so they must be dependent
+
+#1k - they are independent because a random woman's rating doesn’t influence a random man's rating
+
+#2c - NO!  If p<.05, it is statistically significant, so there is a relationship between gender and music preference.
+
+#2d - 	.43005181
+	.25626204
+	.11823204
+	.20616570
+	.8842975
+	.1157025 
+
+#2d - last two should be .8842975 and .1157025 (column percents!)
+
+#3c - discrete, yes, but countably infinite.
+
+#6b - E(profit) = sum( c(-2,72) * c(37/38, 1/38)) = -0.05263158
+
+
+#6b - interpretation: over the long run, casinos expect to make ~16 cents every time a player bets on a single number.  
+
+
+
+
+LACROSSE:
+
+Oops: #1g for females should be .42, not .32
+
+
+
+#1k - they are independent because they don’t influence each other
+
+
+
+#2b - you flipped male/female preferences
+
+
+
+#3c - discrete, yes, but countably infinite.
+
+
+
+#6b - don't divide the E(X) by 2!!!  Your answer is half of what it should be.

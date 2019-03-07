@@ -1,0 +1,179 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This template is primarily based on the Oxygen template developed by the  %
+% KDE Project: http://www.kde.org/slides                                    %
+%                                                                           %
+% The progressbar in the footer was adapted from version 0.32 of the        %
+% progressbar theme: http://recherche.noiraudes.net/en/LaTeX.php            %
+%                                                                           %
+% The background image for the header was modeled after the Oxygen template %
+%                                                                           %
+% Jack Maddox: jack@auburn.edu                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\RequirePackage{tikz}
+\RequirePackage{pgf}
+\usetikzlibrary{arrows}
+
+\makeatletter
+
+\usetheme{Rochester}
+\useinnertheme{rounded}
+
+\RequirePackage{pgf}
+
+\pgfdeclareimage[width=1.0\paperwidth]{oxygen-header-CCC}{oxygen-header-CCC}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+%\setbeamercovered{transparent}
+\setbeamertemplate{navigation symbols}{}
+
+\beamer@headheight=0.13\paperwidth
+
+\definecolor{oxygenorange}{HTML}{F87217}
+\definecolor{oxygengray}{HTML}{686868}
+\definecolor{oxygenlightgray}{HTML}{EEEEEE}
+\definecolor{oxygenblue}{HTML}{236EAF}
+\setbeamercolor*{Title bar}{fg=black}
+\setbeamercolor*{Location bar}{fg=black}
+\setbeamercolor*{headline}{bg=black,fg=black}
+\setbeamercolor*{frametitle}{parent=headline}
+\setbeamercolor*{block title}{bg=black,fg=yellow}
+\setbeamercolor*{block body}{bg=oxygenlightgray,fg=oxygengray}
+\setbeamercolor*{section in head/foot}{bg=oxygenlightgray,fg=purple}
+
+\usecolortheme[named=black]{structure}
+
+\setbeamerfont{section in head/foot}{size=\tiny,series=\normalfont}
+\setbeamerfont{frametitle}{size=\Large}
+\usefonttheme{serif}
+
+%\setbeamertemplate{headline}
+\setbeamertemplate{frametitle}
+{
+  \vskip-0.25\beamer@headheight
+  \vskip-\baselineskip
+  \vskip-0.15cm
+  \hskip-0.5cm\usebeamerfont*{frametitle}\insertframetitle
+  %\hskip-0.5cm\usebeamerfont*{frametitle}\insertsubsection
+  \vskip-0.05em
+  \hskip0.71cm\usebeamerfont*{framesubtitle}\insertframesubtitle
+  \vskip0.75em
+}
+
+\setbeamertemplate{headline}
+{
+  \pgfuseimage{oxygen-header-CCC}
+  \vskip -1.95cm
+  \linethickness{0pt}
+  \framelatex{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.3\beamer@headheight]{Title bar}
+    \usebeamerfont{section in head/foot}%
+    \hskip0.01cm\insertsectionnavigationhorizontal{12pt}{\hskip0.22cm}{}%
+  \end{beamercolorbox}}
+  \vskip -0.15cm
+  \framelatex{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.7\beamer@headheight]{Title bar}
+  \end{beamercolorbox}}
+}
+
+\setbeamertemplate{footline}
+{
+  \linethickness{0pt}
+  \framelatex{
+  \begin{beamercolorbox}[leftskip=.3cm,wd=\paperwidth,ht=0.3\beamer@headheight,sep=0.1cm]{Location bar}
+    \usebeamerfont{section in head/foot}%
+    \insertshortauthor~|~\insertshorttitle
+    \hfill
+    \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Some color definitions...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{progressbar primary}{parent=palette primary}
+\setbeamercolor{progressbar secondary}{parent=palette secondary}
+\setbeamercolor{progressbar tertiary}{parent=palette tertiary}
+\setbeamercolor{progressbar quaternary}{parent=palette quaternary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Some computations dedicated to the progressbar...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newdimen\progressbar@currentbarlength
+\newdimen\progressbar@framenumberrectangle
+\newdimen\progressbar@titlerectangle
+\newdimen\progressbar@leftbar
+
+\newcount\progressbar@tmpresult
+\newcount\progressbar@numer
+\newcount\progressbar@denom
+\newcount\progressbar@barlength
+
+\progressbar@framenumberrectangle=\paperwidth
+\progressbar@titlerectangle=\paperwidth
+
+\advance\progressbar@framenumberrectangle by -0.9cm
+\advance\progressbar@titlerectangle by -1.1cm
+
+\progressbar@barlength=110 % (in millimeters)
+\progressbar@leftbar=\progressbar@titlerectangle
+\advance\progressbar@leftbar by -\progressbar@barlength mm
+
+\def\insertprogressbar{
+  \ifnum\inserttotalframenumber=1\else
+    \progressbar@numer=\insertframenumber
+    \advance\progressbar@numer by -1
+    \progressbar@denom=\inserttotalframenumber
+    \advance\progressbar@denom by -1
+    \progressbar@tmpresult=\progressbar@barlength
+    \multiply\progressbar@tmpresult by \progressbar@numer
+    \divide\progressbar@tmpresult by \progressbar@denom
+    \progressbar@currentbarlength=\progressbar@tmpresult mm
+    
+    \parbox[c]{\textwidth}{\vspace{-10pt}\begin{center}\begin{tikzpicture}
+      \draw (\progressbar@framenumberrectangle, 0.21cm) node [anchor=mid west] {\color{black}\tiny\insertframenumber\,/\,\inserttotalframenumber};
+\draw (\progressbar@titlerectangle, 0.21cm) node [anchor=south east] {\color{bg!70!fg} \hspace{12pt}};
+      \fill (\progressbar@leftbar, 0.12cm) [fill=bg, rounded corners=0.1cm] rectangle (\progressbar@titlerectangle, 0.3cm);
+      \ifnum\insertframenumber=1\else
+      \shade[rounded corners=0.1cm] (\progressbar@leftbar, 0.12cm) rectangle ++(\progressbar@currentbarlength, 0.2cm);
+      \fi
+      \draw (\progressbar@leftbar, 0.11cm) [draw=bg!70!fg, rounded corners=0.1cm] rectangle ++(\progressbar@barlength*2.84pt, 0.2cm);
+    \end{tikzpicture}\end{center}}
+  \fi
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Definition of the customized templates...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<presentation>
+
+\newlength\progressbar@sectionboxwidth
+\newlength\progressbar@sectionboxheight
+\newbox\progressbar@sectionbox
+\newbox\progressbar@sectionboxbox
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Footline...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\defbeamertemplate*{footline}{progressbar theme}{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.6cm,dp=0ex]{progressbar in head/foot}%
+    \insertprogressbar
+  \end{beamercolorbox}%
+}
+
+\makeatother
